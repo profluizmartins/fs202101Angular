@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome do Hotel" name="nmHotel" [(ngModel)]="hotel.nmHotel">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Endereço" name="endereco" [(ngModel)]="hotel.endereco">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="Quantidade de Estrelas" name="qtdEstrelas" [(ngModel)]="hotel.qtdEstrelas">
+        </mat-form-field>
+
+    </form>
+
+    <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+    <button mat-raised-button color="warn" routerLink="/hoteis/">Cancelar</button>
+</mat-card>
