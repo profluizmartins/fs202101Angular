@@ -27,6 +27,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { HotelUpdateComponent } from './component/view/hotel/hotel-update/hotel-update.component';
 import { ConfirmDeleteComponent } from './component/template/confirm-delete/confirm-delete.component';
+import { MatSelectModule } from '@angular/material/select';
+import { QuartoUpdateComponent } from './component/view/quarto/quarto-update/quarto-update.component';
+
 
 @NgModule({
   declarations: [
@@ -40,8 +43,9 @@ import { ConfirmDeleteComponent } from './component/template/confirm-delete/conf
     QuartoListComponent,
     QuartoFormComponent,
     HotelUpdateComponent,
-    ConfirmDeleteComponent
-  
+    ConfirmDeleteComponent,
+    QuartoUpdateComponent
+
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import { ConfirmDeleteComponent } from './component/template/confirm-delete/conf
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,40 @@
-<p>quarto-form works!</p>
+<mat-card>
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <form>
+
+        <mat-form-field appearance="fill">
+            <mat-label>-- Selecione o Hotel --</mat-label>
+            <mat-select [(value)]="quarto.hotel.idHotel" name="hotel" >
+              <mat-option *ngFor="let h of hoteis" [value]="h.idHotel">
+                {{h.nmHotel}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+      
+        <mat-form-field appearance="fill">
+            <mat-label>-- Selecione a Categoria do Quarto --</mat-label>
+            <mat-select [(value)]="quarto.categoriaQuarto" name="categoria">
+              <mat-option *ngFor="let cat of categorias  | keyvalue" [value]="cat.key">
+                {{cat.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="Quantidade de Leitos" name="qtdLeito" [(ngModel)]="quarto.qtdLeito">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number"  placeholder="Número do Quarto" name="nrQuarto" [(ngModel)]="quarto.nrQuarto">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number"  step ="0.01"  placeholder="Preço da Diária" name="prDiaria" [(ngModel)]="quarto.prDiaria">
+        </mat-form-field>
+
+
+    </form>
+
+    <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+    <button mat-raised-button color="warn" routerLink="/hoteis/">Cancelar</button>
+</mat-card>

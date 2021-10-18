@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuartoFormComponent } from './quarto-form.component';
+import { QuartoUpdateComponent } from './quarto-update.component';
 
-describe('QuartoFormComponent', () => {
-  let component: QuartoFormComponent;
-  let fixture: ComponentFixture<QuartoFormComponent>;
+describe('QuartoUpdateComponent', () => {
+  let component: QuartoUpdateComponent;
+  let fixture: ComponentFixture<QuartoUpdateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuartoFormComponent ]
+      declarations: [ QuartoUpdateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuartoFormComponent);
+    fixture = TestBed.createComponent(QuartoUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaQuarto } from 'src/app/enum/categoriaQuarto.enum';
 import { Hotel } from 'src/app/model/hotel.model';
 import { Quarto } from 'src/app/model/quarto.model';
 import { HotelService } from 'src/app/service/hotel.service';
 import { QuartoService } from 'src/app/service/quarto.service';
 
-
 @Component({
-  selector: 'app-quarto-form',
-  templateUrl: './quarto-form.component.html',
-  styleUrls: ['./quarto-form.component.css']
+  selector: 'app-quarto-update',
+  templateUrl: './../quarto-form/quarto-form.component.html',
+  styleUrls: ['./../quarto-form/quarto-form.component.css']
 })
-export class QuartoFormComponent implements OnInit {
+export class QuartoUpdateComponent implements OnInit {
 
   titulo: String = "Cadastrar novo quarto";
  
@@ -32,9 +31,8 @@ export class QuartoFormComponent implements OnInit {
   public categorias = Object.values(CategoriaQuarto);
   public hoteis : Hotel[] = [];
 
-
-
   constructor(private router: Router,
+    private route: ActivatedRoute,
     private service: QuartoService,
     private hotelService: HotelService) { }
 
@@ -42,15 +40,21 @@ export class QuartoFormComponent implements OnInit {
     this.hotelService.findAll().subscribe(hoteis =>{
       this.hoteis = hoteis;
     });
-  }
 
+    let id = this.route.snapshot.paramMap.get('id');
+    if(id != null){
+      this.service.findById(id).subscribe(quarto => {
+        this.quarto = quarto;
+        console.log(this.quarto);
+      })
+    }
+
+  }
   salvar(): void {
-    this.service.create(this.quarto).subscribe(() =>{
-      this.service.showMessage("Quarto cadastro com sucesso!")
+    console.log(this.quarto)
+    this.service.update(this.quarto).subscribe(() =>{
+      this.service.showMessage("Quarto atualizado sucesso!")
       this.router.navigate(['/quartos']);
     });
   }
-
-
-
 }

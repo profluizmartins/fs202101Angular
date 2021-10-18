@@ -1,4 +1,64 @@
-<p>quarto-list works!</p>
+<mat-card class="example-card mat-elevation-z3" >
+    <button mat-button color="primary" routerLink="/quartos/form">Novo Quarto</button>
+    <mat-card-header>
+        <mat-card-title>Quartos</mat-card-title>
+        <mat-card-subtitle>Lista de Quartos Cadastrados</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <table mat-table [dataSource]="quartos" class="mat-elevation-z8">
+
+        
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> #ID </th>
+              <td mat-cell *matCellDef="let quarto"> {{quarto.idQuarto}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="nome">
+              <th mat-header-cell *matHeaderCellDef> Nome do Hotel </th>
+              <td mat-cell *matCellDef="let quarto"> {{quarto.hotel.nmHotel}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="numero">
+              <th mat-header-cell *matHeaderCellDef> Número do Quarto </th>
+              <td mat-cell *matCellDef="let quarto"> {{quarto.nrQuarto}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="categoria">
+              <th mat-header-cell *matHeaderCellDef> Categoria de Quarto </th>
+              <td mat-cell *matCellDef="let quarto"> {{quarto.categoriaQuarto}} </td>
+            </ng-container>
+          
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="diaria">
+                <th mat-header-cell *matHeaderCellDef> Preço da Diária </th>
+                <td mat-cell *matCellDef="let quarto"> {{quarto.prDiaria}} </td>
+              </ng-container>
 
 
-<button mat-button color="primary" routerLink="/quartos/form">Novo Quarto</button>
+            <ng-container matColumnDef="acao">
+                <th mat-header-cell *matHeaderCellDef>Acões </th>
+                <td mat-cell *matCellDef="let quarto">
+                    <a routerLink="/quartos/{{quarto.idQuarto}}" class="edit">
+                        <button mat-raised-button color="primary"><i class="material-icons">edit</i></button>
+                    </a>
+                    <a>
+                        <button mat-raised-button color="warn" (click)="excluir(quarto)"><i class="material-icons">delete</i></button>
+                    </a>
+                </td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+
+    </mat-card-content>
+</mat-card>
+
+
+
