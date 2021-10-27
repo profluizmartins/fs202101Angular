@@ -45,13 +45,11 @@ export class QuartoUpdateComponent implements OnInit {
     if(id != null){
       this.service.findById(id).subscribe(quarto => {
         this.quarto = quarto;
-        console.log(this.quarto);
       })
     }
 
   }
   salvar(): void {
-    console.log(this.quarto)
     this.service.update(this.quarto).subscribe(() =>{
       this.service.showMessage("Quarto atualizado sucesso!")
       this.router.navigate(['/quartos']);

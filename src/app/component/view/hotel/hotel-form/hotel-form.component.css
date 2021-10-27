@@ -12,3 +12,7 @@ form {
     background-color: green;
     color: white;
 }
+.botton {
+    display: flex;
+    flex-direction: row;
+}

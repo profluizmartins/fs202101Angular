@@ -2,6 +2,7 @@ import { Hotel } from './../../../../model/hotel.model';
 import { HotelService } from './../../../../service/hotel.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hotel-update',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HotelUpdateComponent implements OnInit {
 
   titulo: string = "Alterar dados do Hotel";
-
+  public formulario: FormGroup;
   hotel: Hotel = {
     nmHotel : "",
     endereco: "",
@@ -24,6 +25,16 @@ export class HotelUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.formulario = new FormGroup({
+      nmHotel: new FormControl(null, Validators.required),
+      endereco: new FormControl(null, Validators.required),
+      qtdEstrelas: new FormControl(null, [
+                                          Validators.required,
+                                          Validators.min(1),
+                                          Validators.max(5)
+                                          ])
+    });
+
     let id = this.route.snapshot.paramMap.get('id');
     if(id != null){
       this.service.findById(id).subscribe(hotel => {
@@ -36,6 +47,9 @@ export class HotelUpdateComponent implements OnInit {
     this.service.update(this.hotel).subscribe(() =>{
       this.service.showMessage("Hotel atualizado sucesso!")
       this.router.navigate(['/hoteis']);
+    },
+    err => {
+      this.service.showMessage("Não foi possível atualizar hotel", true)
     });
   }
 }

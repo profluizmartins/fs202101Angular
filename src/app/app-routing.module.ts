@@ -7,6 +7,7 @@ import { HotelListComponent } from './component/view/hotel/hotel-list/hotel-list
 import { QuartoFormComponent } from './component/view/quarto/quarto-form/quarto-form.component';
 import { QuartoListComponent } from './component/view/quarto/quarto-list/quarto-list.component';
 import { QuartoUpdateComponent } from './component/view/quarto/quarto-update/quarto-update.component';
+import { PaginadorComponent } from './component/view/paginador/paginador.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'quartos', component: QuartoListComponent},
   {path: 'quartos/form', component: QuartoFormComponent},
   {path: 'quartos/:id', component: QuartoUpdateComponent},
+  {path: 'paginador', component: PaginadorComponent}
 ];
 
 @NgModule({

@@ -48,6 +48,9 @@ export class QuartoFormComponent implements OnInit {
     this.service.create(this.quarto).subscribe(() =>{
       this.service.showMessage("Quarto cadastro com sucesso!")
       this.router.navigate(['/quartos']);
+    },
+    err => {
+      this.service.showMessage("Não foi possível cadastrar quarto")
     });
   }
 

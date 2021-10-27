@@ -18,7 +18,7 @@ import { HomeComponent } from './component/view/home/home.component';
 import { HotelFormComponent } from './component/view/hotel/hotel-form/hotel-form.component';
 import { QuartoListComponent } from './component/view/quarto/quarto-list/quarto-list.component';
 import { QuartoFormComponent } from './component/view/quarto/quarto-form/quarto-form.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +29,10 @@ import { HotelUpdateComponent } from './component/view/hotel/hotel-update/hotel-
 import { ConfirmDeleteComponent } from './component/template/confirm-delete/confirm-delete.component';
 import { MatSelectModule } from '@angular/material/select';
 import { QuartoUpdateComponent } from './component/view/quarto/quarto-update/quarto-update.component';
-
+import { PaginadorComponent } from './component/view/paginador/paginador.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { QuartoUpdateComponent } from './component/view/quarto/quarto-update/qua
     QuartoFormComponent,
     HotelUpdateComponent,
     ConfirmDeleteComponent,
-    QuartoUpdateComponent
+    QuartoUpdateComponent,
+    PaginadorComponent
 
   ],
   imports: [
@@ -64,7 +68,11 @@ import { QuartoUpdateComponent } from './component/view/quarto/quarto-update/qua
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
